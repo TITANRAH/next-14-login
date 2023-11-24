@@ -1,0 +1,12 @@
+1. create-next-app next-auth-radix
+2. npm install @radix-ui/themes
+
+import '@radix-ui/themes/styles.css';
+
+3. limpiar proyeccto src completamente en page.tsx
+4. borrar los estilos de global.tsx
+5. en layout importar estilos 
+import '@radix-ui/themes/styles.css';
+import { Theme } from '@radix-ui/themes';
+
+6.envolver en Theme el children
