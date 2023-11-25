@@ -10,3 +10,28 @@ import '@radix-ui/themes/styles.css';
 import { Theme } from '@radix-ui/themes';
 
 6.envolver en Theme el children
+
+para buscar iconos https://www.radix-ui.com/icons
+
+instalar npm install react-hook-form
+
+7. llamar la importancion en donde ocupare el formulkario 
+empzare con signinform 
+
+8. instalar npm install next-auth
+
+guia https://next-auth.js.org/configuration/initialization#route-handlers-app
+
+9. luego creamos el directorio de api y cramos este archivo route.ts y ciopiamos ete codigo
+
+import NextAuth from "next-auth"
+
+const handler = NextAuth({
+  ...
+})
+
+export { handler as GET, handler as POST }
+
+10. luego creamos las credentials siguiendo la guia en el menu lateral providers -> credemtials
+
+en el mismo archivo route import CredentialsProvider from "next-auth/providers/credentials"

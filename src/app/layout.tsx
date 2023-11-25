@@ -18,9 +18,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Theme>
+    // por si mujeren los estilos suppressHydrationWarning={true} en la etiqueta html
+    <html lang="en" suppressHydrationWarning={true} >
+      <body className={inter.className}> 
+        <Theme appearance='dark'>
           {children}
         </Theme>
       </body>
