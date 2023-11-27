@@ -3,6 +3,10 @@
 import { EnvelopeClosedIcon, LockClosedIcon } from "@radix-ui/react-icons";
 import { Button, Flex, Text, TextField } from "@radix-ui/themes";
 import { Controller, useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+
+// esto me permite enviar los datos de login de una
+import { signIn } from "next-auth/react";
 
 function SigninForm() {
   // llamo a react hook form
@@ -18,9 +22,30 @@ function SigninForm() {
     },
   });
 
+  // llamo a router
+  const router = useRouter();
+
   // este submit tendra la funcion subimit de useForm
-  const onSubmit = handleSubmit((data) => {
+  const onSubmit = handleSubmit(async (data) => {
     console.log(data);
+
+    // esto apunta al auth nextauth creado
+    const res = await signIn("credentials", {
+      redirect: false,
+      email: data.email,
+      password: data.password,
+    });
+
+    if (!res?.ok) {
+      console.log(res);
+
+      return;
+    }
+
+    // si el of es falso llega hasta ahi si no ve a dashboard
+    router.push("/dashboard");
+
+    console.log("res desde components/signinForm al loguearse", res);
   });
 
   return (
@@ -78,9 +103,9 @@ function SigninForm() {
                 value: true,
               },
               minLength: {
-                message: 'Password must be at least 6 characters',
+                message: "Password must be at least 6 characters",
                 value: 6,
-              }
+              },
             }}
             render={({ field }) => {
               return (
@@ -101,7 +126,9 @@ function SigninForm() {
           </Text>
         )}
 
-        <Button type="submit" mt="4">Sign In</Button>
+        <Button type="submit" mt="4">
+          Sign In
+        </Button>
       </Flex>
     </form>
   );
