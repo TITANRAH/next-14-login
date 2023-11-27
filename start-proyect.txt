@@ -100,3 +100,18 @@ export async function POST(request: Request){
 
 npx prisma studio
 
+si elimino base de datos 
+
+digo npx prisma db push y se vuelve a crear
+
+pero sin el dato guardado
+
+esta base de datos es para desarrollo despues s ecambiara par aproduccion 
+
+22 instalar bcrypt y el tipo
+
+npm  i bcrypt 
+npm i @types/bcrypt -D
+
+23 si yo escribo api/auth/signout me da la opcion de jacer logout 
+pero no es la interfaz que quiero de vista asi que se hara otra 
